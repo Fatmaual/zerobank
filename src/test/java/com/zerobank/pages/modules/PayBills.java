@@ -4,13 +4,16 @@ import com.zerobank.pages.ZeroBase;
 import com.zerobank.utilities.BrowserUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 
 public class PayBills extends ZeroBase {
 
     private boolean isInputFieldEmpty;
     private String emptyField;
 
+    /**
+     * This method returns empty field name
+     * @return
+     */
     public String getEmptyField() {
         return emptyField;
     }
@@ -53,8 +56,6 @@ public class PayBills extends ZeroBase {
      * @return message as String
      */
     public String getRequiredFieldAlert(){
-        WebElement inputElement = driver.findElement(By.name(emptyField));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        return (String)js.executeScript("return arguments[0].validationMessage;", inputElement);
+        return (String)((JavascriptExecutor) driver).executeScript("return arguments[0].validationMessage;", driver.findElement(By.name(emptyField)));
     }
 }
