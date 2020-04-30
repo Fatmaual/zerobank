@@ -3,6 +3,8 @@ package com.zerobank.pages.modules;
 import com.zerobank.pages.ZeroBase;
 import com.zerobank.utilities.BrowserUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 public class PayBills extends ZeroBase {
 
@@ -33,5 +35,16 @@ public class PayBills extends ZeroBase {
      */
     public String getAlert(){
        return driver.findElement(By.id("alert_content")).getText();
+    }
+
+    /**
+     * This method returns required field message if required field leaved empty
+     * @return message as String
+     */
+    public String getRequiredFieldAller(String field){
+
+        WebElement inputElement = driver.findElement(By.name(field));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        return (String)js.executeScript("return arguments[0].validationMessage;", inputElement);
     }
 }
