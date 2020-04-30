@@ -23,9 +23,9 @@ public class AccountSummaryStepDefinitions {
     }
 
     @Then("user should verify following table columns from {string}:")
-    public void user_should_verify_following_table_columns_from(String string, io.cucumber.datatable.DataTable dataTable) {
+    public void user_should_verify_following_table_columns_from(String string, List<String> dataTable) {
         System.out.printf("Verify %s table columns: %s",string,dataTable);
-        Assert.assertEquals(dataTable,accountSummary.getAccountTypes());
+        Assert.assertEquals(dataTable,accountSummary.getColumnNames("Credit Accounts"));
     }
 
 

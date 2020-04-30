@@ -1,4 +1,4 @@
-@account_types
+@account_summary
 Feature: Account Summary
   As user, I want to be able to see account types on Account Summary page.
 
@@ -8,7 +8,7 @@ Feature: Account Summary
     When users logs in with valid credentials
     Then user should navigate to "Account Summary" page
     And user should verify that these account types:
-      | Cash Accounts |
-      | Investment Accounts |
-      | Credit Accounts     |
-      | Loan Accounts      |
+      | Cash Accounts|
+      | Investment Accounts|
+      | Credit Accounts|
+      | Loan Accounts|

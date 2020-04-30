@@ -8,9 +8,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         glue = "com/zerobank/stepdefinitions",
         features = "src/test/resources/features",
-        dryRun = true,
+        dryRun = false,
         strict = false,
-        tags= "@account_type",
+        tags= "@account_type_columns",
         plugin={
                 "html:target/default-report",
                 "json:target/zerobank_cucumber.json"
