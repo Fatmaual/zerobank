@@ -8,12 +8,23 @@ import org.openqa.selenium.WebElement;
 
 public class PayBills extends ZeroBase {
 
+    private boolean isInputFieldEmpty;
+    private String emptyField;
+
+    public String getEmptyField() {
+        return emptyField;
+    }
+
     /**
      * This method for data entry
      * @param data input data
      * @param element web element name
      */
     public void enterDataTo(String data, String element){
+        if(data.equals("")){
+            isInputFieldEmpty=true;
+            emptyField=element;
+        }
         driver.findElement(By.name(element)).sendKeys(data);
     }
 
@@ -41,9 +52,8 @@ public class PayBills extends ZeroBase {
      * This method returns required field message if required field leaved empty
      * @return message as String
      */
-    public String getRequiredFieldAller(String field){
-
-        WebElement inputElement = driver.findElement(By.name(field));
+    public String getRequiredFieldAlert(){
+        WebElement inputElement = driver.findElement(By.name(emptyField));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         return (String)js.executeScript("return arguments[0].validationMessage;", inputElement);
     }

@@ -1,7 +1,6 @@
 package com.zerobank.stepdefinitions;
 
 import com.zerobank.pages.modules.Login;
-import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.ConfigurationReader;
 import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Given;
@@ -53,7 +52,6 @@ public class LoginStepDefinitions {
     @Then("user should verify that title is {string}")
     public void user_should_verify_that_title_is(String string) {
         System.out.println("Verify title is a Zero - Account Summary");
-        BrowserUtils.waitForPageToLoad(10);
         Assert.assertEquals(string,Driver.getDriver().getTitle());
     }
 

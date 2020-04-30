@@ -7,9 +7,6 @@ import org.junit.Assert;
 public class PB_StepDefinitions {
     PayBills payBills=new PayBills();
 
-    private boolean isInputFieldEmpty;
-    private String emptyField;
-
 
     @Then("user should choose a Payee {string}")
     public void user_should_choose_a_Payee(String string) {
@@ -25,19 +22,11 @@ public class PB_StepDefinitions {
     @Then("user should enter an Amount {string}")
     public void user_should_enter_an_Amount(String string) {
         System.out.println("Enter amount : "+string);
-        if(string.equals("")){
-            isInputFieldEmpty=true;
-            emptyField="amount";
-        }
         payBills.enterDataTo(string,"amount");
     }
     @Then("user should enter a Date {string}")
     public void user_should_enter_a_Date(String string) {
         System.out.println("Enter date : "+string);
-        if(string.equals("")){
-            isInputFieldEmpty=true;
-            emptyField="date";
-        }
         payBills.enterDataTo(string,"date");
     }
     @Then("user should enter a Description {string}")
@@ -57,11 +46,9 @@ public class PB_StepDefinitions {
 
     @Then("user should verify that required field message {string}")
     public void user_should_verify_that_required_field_message(String string) {
+        System.out.println("empty field is -> "+payBills.getEmptyField());
+        Assert.assertEquals(string,payBills.getRequiredFieldAlert());
 
-        System.out.println("empty field is -> "+emptyField);
-        if(isInputFieldEmpty){
-            Assert.assertEquals(string,payBills.getRequiredFieldAller(emptyField));
-        }
     }
 
 
