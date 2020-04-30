@@ -1,5 +1,6 @@
-package com.zerobank.pages;
+package com.zerobank.pages.modules;
 
+import com.zerobank.pages.ZeroBase;
 import com.zerobank.utilities.BrowserUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
@@ -9,16 +10,6 @@ import java.util.List;
 public class AccountActivity extends ZeroBase {
 
 
-    /**
-     * This method navigates between sub modules
-     * @param module should get sub-module name:
-     *              "Show Transactions"
-     *              "Find Transactions"
-     */
-    public void navigateToSubPage(String module){
-        driver.findElement(By.linkText(module)).click();
-        BrowserUtils.waitForPageToLoad(10);
-    }
 
     /**
      * This method returns available account options in Show Transactions sub-module

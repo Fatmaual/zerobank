@@ -1,6 +1,6 @@
 package com.zerobank.stepdefinitions;
 
-import com.zerobank.pages.Login;
+import com.zerobank.pages.modules.Login;
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.ConfigurationReader;
 import com.zerobank.utilities.Driver;

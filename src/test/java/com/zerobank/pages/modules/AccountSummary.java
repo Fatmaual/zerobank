@@ -1,12 +1,13 @@
-package com.zerobank.pages;
+package com.zerobank.pages.modules;
 
+import com.zerobank.pages.ZeroBase;
 import com.zerobank.utilities.BrowserUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class AccountSummary extends ZeroBase{
+public class AccountSummary extends ZeroBase {
 
     @FindBy(className = "board-header")
     private List<WebElement> accountTypes;

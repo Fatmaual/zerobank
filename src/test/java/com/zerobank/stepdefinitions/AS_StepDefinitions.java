@@ -1,6 +1,6 @@
 package com.zerobank.stepdefinitions;
 
-import com.zerobank.pages.AccountSummary;
+import com.zerobank.pages.modules.AccountSummary;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 

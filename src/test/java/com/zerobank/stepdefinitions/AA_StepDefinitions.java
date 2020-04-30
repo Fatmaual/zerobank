@@ -1,6 +1,6 @@
 package com.zerobank.stepdefinitions;
 
-import com.zerobank.pages.AccountActivity;
+import com.zerobank.pages.modules.AccountActivity;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 

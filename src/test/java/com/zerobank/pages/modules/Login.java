@@ -1,12 +1,13 @@
-package com.zerobank.pages;
+package com.zerobank.pages.modules;
 
+import com.zerobank.pages.ZeroBase;
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.ConfigurationReader;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Login extends ZeroBase{
+public class Login extends ZeroBase {
 
     @FindBy(id = "signin_button")
     private WebElement signinBtnMain;

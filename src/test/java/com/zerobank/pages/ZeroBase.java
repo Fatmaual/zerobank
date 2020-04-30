@@ -41,6 +41,17 @@ public abstract class ZeroBase {
     }
 
     /**
+     * This method navigates between sub modules
+     * @param module should get sub-module name:
+     *              "Show Transactions"
+     *              "Find Transactions"
+     */
+    public void navigateToSubPage(String module){
+        driver.findElement(By.linkText(module)).click();
+        BrowserUtils.waitForPageToLoad(10);
+    }
+
+    /**
      * Helps you to find columns names
      * @param from should get header name
      * @return list of column names
