@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         dryRun = false,
         strict = false,
-        tags= "@account_summary",
+        tags= "@pay_bill_success_message",
         plugin={
                 "html:target/default-report",
                 "json:target/zerobank_cucumber.json"

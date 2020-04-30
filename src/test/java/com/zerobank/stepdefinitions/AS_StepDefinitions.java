@@ -11,14 +11,14 @@ public class AS_StepDefinitions {
 
     @Then("user should navigate to {string} page")
     public void user_should_navigate_to_page(String string) {
-        System.out.printf("Navigate to %s ",string);
+        System.out.println("Navigate to "+string);
         accountSummary.navigateTo(string);
     }
 
 
     @Then("user should verify that these account types:")
     public void user_should_verify_that_these_account_types(List<String> dataTable) {
-        System.out.printf("Verify account types: %s",dataTable);
+        System.out.println("Verify account types: "+dataTable);
         Assert.assertEquals(dataTable,accountSummary.getAccountTypes());
     }
 

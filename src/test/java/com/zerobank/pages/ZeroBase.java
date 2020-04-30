@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -59,6 +60,15 @@ public abstract class ZeroBase {
     public List<String> getColumnNames(String from){
         List<WebElement> columns=driver.findElements(By.xpath("(//h2[text()='"+from+"']//following-sibling::div//tr)[1]//th"));
         return BrowserUtils.getTextFromWebElements(columns);
+    }
+
+
+    /**
+     * Helps you to select from designated drop down
+     * @param selectElementName accepts Element ID
+     */
+    public void selectFrom(String selectElementName, String optionText){
+        new Select(driver.findElement(By.name(selectElementName))).selectByVisibleText(optionText);
     }
 
 }
