@@ -6,7 +6,7 @@ import org.junit.Assert;
 
 import java.util.List;
 
-public class AccountSummaryStepDefinitions {
+public class AS_StepDefinitions {
     AccountSummary accountSummary=new AccountSummary();
 
     @Then("user should navigate to {string} page")
@@ -22,10 +22,11 @@ public class AccountSummaryStepDefinitions {
         Assert.assertEquals(dataTable,accountSummary.getAccountTypes());
     }
 
+
     @Then("user should verify following table columns from {string}:")
     public void user_should_verify_following_table_columns_from(String string, List<String> dataTable) {
         System.out.printf("Verify %s table columns: %s",string,dataTable);
-        Assert.assertEquals(dataTable,accountSummary.getColumnNames("Credit Accounts"));
+        Assert.assertEquals(dataTable,accountSummary.getColumnNames(string));
     }
 
 

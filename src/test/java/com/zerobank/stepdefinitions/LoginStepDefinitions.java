@@ -49,11 +49,12 @@ public class LoginStepDefinitions {
         login.login(ConfigurationReader.getProperty("username"),"");
     }
 
-    @Then("user should verify that title is a Zero - Account Summary")
-    public void user_should_verify_that_title_is_a_Zero_Account_Summary() {
+
+    @Then("user should verify that title is {string}")
+    public void user_should_verify_that_title_is(String string) {
         System.out.println("Verify title is a Zero - Account Summary");
         BrowserUtils.waitForPageToLoad(10);
-        Assert.assertEquals("Zero - Account Summary",Driver.getDriver().getTitle());
+        Assert.assertEquals(string,Driver.getDriver().getTitle());
     }
 
     @Then("user should verify that error message is {string}")

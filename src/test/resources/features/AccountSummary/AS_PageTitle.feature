@@ -7,6 +7,6 @@ Feature: Account Summary
     Given user in on the login page
     When users logs in with valid credentials
     Then user should navigate to "Account Summary" page
-    And user should verify that title is a Zero - Account Summary
+    And user should verify that title is "Zero - Account Summary"
 
 

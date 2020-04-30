@@ -40,4 +40,14 @@ public abstract class ZeroBase {
         BrowserUtils.waitForPageToLoad(10);
     }
 
+    /**
+     * Helps you to find columns names
+     * @param from should get header name
+     * @return list of column names
+     */
+    public List<String> getColumnNames(String from){
+        List<WebElement> columns=driver.findElements(By.xpath("(//h2[text()='"+from+"']//following-sibling::div//tr)[1]//th"));
+        return BrowserUtils.getTextFromWebElements(columns);
+    }
+
 }
