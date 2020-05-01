@@ -12,8 +12,8 @@ import org.junit.Assert;
 public class LoginStepDefinitions {
     Login login=new Login();
 
-    @Given("user in on the login page")
-    public void user_in_on_the_login_page(){
+    @Given("user in the login page")
+    public void user_in_the_login_page(){
         System.out.println("Open Login Page...");
         Driver.getDriver().get(ConfigurationReader.getProperty("url"));
         BrowserUtils.waitForPageToLoad(10);

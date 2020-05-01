@@ -4,7 +4,7 @@ Feature: Account Activity
 
   @account_activity_page_title
   Scenario: Account Activity page should have the title Zero - Account Activity
-    Given user in on the login page
+    Given user in the login page
     When users logs in with valid credentials
     Then user should navigate to "Account Activity" page
     And user should verify that title is "Zero - Account Activity"

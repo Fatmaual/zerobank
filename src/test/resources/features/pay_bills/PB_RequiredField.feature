@@ -4,7 +4,7 @@ Feature: Pay Bills
 
   @pay_bill_required_field_message
   Scenario Outline: Amount or Date field should give "Please fill out this field" message if it leaved empty to complete process.
-    Given user in on the login page
+    Given user in the login page
     When users logs in with valid credentials
     Then user should navigate to "Pay Bills" page
     And user should navigate to "Pay Saved Payee" sub-page

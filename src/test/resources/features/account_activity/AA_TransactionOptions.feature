@@ -4,7 +4,7 @@ Feature: Account Activity
 
   @account_options
   Scenario: In Account Activity, account drop down should have the "Savings, Checking, Loan, Credit Card, Brokerage"
-    Given user in on the login page
+    Given user in the login page
     When users logs in with valid credentials
     Then user should navigate to "Account Activity" page
     Then user should navigate to "Show Transactions" sub-page

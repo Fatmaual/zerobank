@@ -8,7 +8,7 @@ Feature: Login
     @valid_user
     Scenario: Login with valid credentials and verify that title is Zero - Account Summary
       When users logs in with valid credentials
-      Then user should verify that title is a Zero - Account Summary
+      Then user should verify that title is "Zero - Account Summary"
 
     @wrong_user_name
     Scenario: Login with invalid user name credentials and verify that error message is Login and/or password are wrong.

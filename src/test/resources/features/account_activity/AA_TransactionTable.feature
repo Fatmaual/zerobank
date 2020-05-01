@@ -4,7 +4,7 @@ Feature: Account Activity
 
   @transaction_columns
   Scenario: Account Activity - Transactions module should have columns
-    Given user in on the login page
+    Given user in the login page
     When users logs in with valid credentials
     Then user should navigate to "Account Activity" page
     Then user should navigate to "Show Transactions" sub-page

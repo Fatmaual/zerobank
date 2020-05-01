@@ -4,7 +4,7 @@ Feature: Account Summary
 
   @account_type
   Scenario: Account summary page should have "Cash Accounts, Investment Accounts,Credit Accounts,Loan Accounts"account types
-    Given user in on the login page
+    Given user in the login page
     When users logs in with valid credentials
     Then user should navigate to "Account Summary" page
     And user should verify that these account types:

@@ -4,7 +4,7 @@ Feature: Pay Bills
 
   @pay_bill_success_message
   Scenario Outline: Successful Pay operation should give "The payment was successfully submitted." message.
-    Given user in on the login page
+    Given user in the login page
     When users logs in with valid credentials
     Then user should navigate to "Pay Bills" page
     And user should navigate to "Pay Saved Payee" sub-page

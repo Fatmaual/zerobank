@@ -2,7 +2,7 @@
 Feature: Navigating to specific accounts in Accounts Activity
 
   Scenario:	Savings	account	redirect
-    Given user in on the login page
+    Given user in the login page
     When users logs in with valid credentials
     When the user clicks on	"Savings" link on the "Account Summary" page
     Then the "Account Activity" page should be displayed
