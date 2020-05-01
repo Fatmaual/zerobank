@@ -71,4 +71,29 @@ public abstract class ZeroBase {
         new Select(driver.findElement(By.name(selectElementName))).selectByVisibleText(optionText);
     }
 
+
+    /**
+     * This method checks that input has alphabetic characters or not
+     * @param element input WebElement
+     * @return true if any alphabetic character entered
+     *         false if only alphabetic character not entered
+     *
+     */
+    public boolean isInputFieldContainsAlphabeticChar(WebElement element){
+        String data=element.getAttribute("value");
+        return !data.equals("")&& data!=null && data.matches(".*[a-zA-Z].*");
+    }
+
+    /**
+     * This method checks that input has special character or not
+     * @param element input WebElement
+     * @return  true if any special character entered
+     *          false if any special character not entered
+     *
+     */
+    public  boolean isInputFieldContainsSpecialChar(WebElement element){
+        String data=element.getAttribute("value");
+        return !data.equals("")&& data!=null && data.matches(".*[^a-zA-Z0-9 ].*");
+    }
+
 }

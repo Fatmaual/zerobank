@@ -4,6 +4,7 @@ import com.zerobank.pages.ZeroBase;
 import com.zerobank.utilities.BrowserUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 public class PayBills extends ZeroBase {
 
@@ -28,7 +29,7 @@ public class PayBills extends ZeroBase {
             isInputFieldEmpty=true;
             emptyField=element;
         }
-        driver.findElement(By.name(element)).sendKeys(data);
+        driver.findElement(By.name(element.toLowerCase())).sendKeys(data);
     }
 
     /**
@@ -58,4 +59,30 @@ public class PayBills extends ZeroBase {
     public String getRequiredFieldAlert(){
         return (String)((JavascriptExecutor) driver).executeScript("return arguments[0].validationMessage;", driver.findElement(By.name(emptyField)));
     }
+
+
+    /**
+     * This method checks entry type and returns if it is
+     * @param elementName input field name
+     * @return true if entry type correct
+     *         false if entry type wrong
+     *
+     */
+    public boolean isEntryCorrect(String elementName){
+        WebElement inputElement=driver.findElement(By.name(elementName.toLowerCase()));
+        if(elementName.equalsIgnoreCase("amount")){
+            System.out.println("Entered data for Amount --->"+driver.findElement(By.name(elementName)).getAttribute("value"));
+            System.out.println("contains alhabet: "+isInputFieldContainsAlphabeticChar(inputElement));
+            System.out.println("contains special: "+isInputFieldContainsSpecialChar(inputElement));
+            return !(isInputFieldContainsAlphabeticChar(inputElement) || isInputFieldContainsSpecialChar(inputElement));
+        }
+        else if (elementName.equalsIgnoreCase("date")){
+            System.out.println("Entered data for date --->"+driver.findElement(By.name(elementName)).getAttribute("value"));
+            System.out.println("contains alhabet: "+isInputFieldContainsAlphabeticChar(inputElement));
+            return !(isInputFieldContainsAlphabeticChar(inputElement));
+        }
+        return false;
+    }
+
+
 }

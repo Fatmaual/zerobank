@@ -51,6 +51,19 @@ public class PB_StepDefinitions {
 
     }
 
+    @Then("user should verify that amount field doesn't accept alphabetic or special character")
+    public void user_should_verify_that_amount_field_doesn_t_accept_alphabetic_or_special_character() {
+        System.out.println("Amount field entry check.");
+        Assert.assertTrue(payBills.isEntryCorrect("amount"));
+    }
+
+    @Then("user should verify that date field doesn't accept alphabetic character")
+    public void user_should_verify_that_date_field_doesn_t_accept_alphabetic_character() {
+        System.out.println("Date field entry check.");
+        Assert.assertTrue(payBills.isEntryCorrect("date"));
+    }
+
+
 
 
 
