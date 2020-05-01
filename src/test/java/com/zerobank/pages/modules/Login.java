@@ -41,6 +41,9 @@ public class Login extends ZeroBase {
         BrowserUtils.waitForPageToLoad(10);
     }
 
+    /**
+     * Login with default user name and password
+     */
     public void login(){
         signinBtnMain.click();
         BrowserUtils.waitForPageToLoad(10);

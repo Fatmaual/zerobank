@@ -2,7 +2,7 @@
 Feature: Account Activity
   As user, I want to be able to see Account Activity page title.
 
-  @page_title
+  @account_activity_page_title
   Scenario: Account Activity page should have the title Zero - Account Activity
     Given user in on the login page
     When users logs in with valid credentials

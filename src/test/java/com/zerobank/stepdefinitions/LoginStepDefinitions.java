@@ -1,6 +1,7 @@
 package com.zerobank.stepdefinitions;
 
 import com.zerobank.pages.modules.Login;
+import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.ConfigurationReader;
 import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Given;
@@ -15,6 +16,7 @@ public class LoginStepDefinitions {
     public void user_in_on_the_login_page(){
         System.out.println("Open Login Page...");
         Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+        BrowserUtils.waitForPageToLoad(10);
     }
 
     @When("users logs in with valid credentials")

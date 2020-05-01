@@ -1,7 +1,9 @@
 package com.zerobank.stepdefinitions;
 
 import com.zerobank.pages.modules.AccountSummary;
+import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 import java.util.List;
@@ -27,6 +29,19 @@ public class AS_StepDefinitions {
     public void user_should_verify_following_table_columns_from(String string, List<String> dataTable) {
         System.out.printf("Verify %s table columns: %s",string,dataTable);
         Assert.assertEquals(dataTable,accountSummary.getColumnNames(string));
+    }
+
+    @When("the user clicks on	{string} link on the {string} page")
+    public void the_user_clicks_on_link_on_the_page(String string, String string2) {
+        System.out.println("User clicks "+string+" link on "+string2+" page");
+        accountSummary.navigateTo(string2);
+        accountSummary.openCreatedAccount(string);
+    }
+
+    @Then("the {string} page should be displayed")
+    public void the_page_should_be_displayed(String string) {
+        System.out.println("Verifies "+string+" page opened.");
+        Assert.assertTrue(Driver.getDriver().getTitle().contains(string));
     }
 
 
