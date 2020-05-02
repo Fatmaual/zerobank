@@ -33,9 +33,9 @@ public class AA_StepDefinitions {
         accountActivity.enterDataTo(to,"toDate");
     }
 
-    @Then("results table should only show transactions dates between “{int}-{int}-{int}” to “{int}-{int}-{int}”")
-    public void results_table_should_only_show_transactions_dates_between_to(Integer int1, Integer int2, Integer int3, Integer int4, Integer int5, Integer int6) {
-         Assert.assertTrue(accountActivity.isItInTheRange(int1,int2,int3,int4,int5,int6,accountActivity.getDates()));
+    @Then("^results table should only show transactions dates between \"(.*)\" to \"(.*)\"$")
+    public void results_table_should_only_show_transactions_dates_between_to(String from, String to) {
+         Assert.assertTrue(accountActivity.isItInTheRange(from,to,accountActivity.getDates()));
 
     }
 
