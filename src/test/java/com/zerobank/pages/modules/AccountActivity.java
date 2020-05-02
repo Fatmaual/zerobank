@@ -74,7 +74,7 @@ public class AccountActivity extends ZeroBase {
      */
     public List<String> getDates(){
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("filtered_transactions_for_account"))));
-        return BrowserUtils.getTextFromWebElements(driver.findElements(By.xpath("//div[@id=\"filtered_transactions_for_account\"]//tr//td[1]")));
+        return BrowserUtils.getTextFromWebElements(driver.findElements(By.xpath("//div[@id=\"filtered_transactions_for_account\"]//td[1]")));
     }
 
     /**

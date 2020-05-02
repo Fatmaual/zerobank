@@ -49,7 +49,6 @@ public class PayBills extends ZeroBase {
         }
         wait.until(ExpectedConditions.presenceOfElementLocated(element));
         driver.findElement(element).click();
-
         BrowserUtils.waitForPageToLoad(10);
     }
 
@@ -80,14 +79,9 @@ public class PayBills extends ZeroBase {
     public boolean isEntryCorrect(String elementName){
         WebElement inputElement=driver.findElement(By.name(elementName.toLowerCase()));
         if(elementName.equalsIgnoreCase("amount")){
-            System.out.println("Entered data for Amount --->"+driver.findElement(By.name(elementName)).getAttribute("value"));
-            System.out.println("contains alhabet: "+isInputFieldContainsAlphabeticChar(inputElement));
-            System.out.println("contains special: "+isInputFieldContainsSpecialChar(inputElement));
             return !(isInputFieldContainsAlphabeticChar(inputElement) || isInputFieldContainsSpecialChar(inputElement));
         }
         else if (elementName.equalsIgnoreCase("date")){
-            System.out.println("Entered data for date --->"+driver.findElement(By.name(elementName)).getAttribute("value"));
-            System.out.println("contains alhabet: "+isInputFieldContainsAlphabeticChar(inputElement));
             return !(isInputFieldContainsAlphabeticChar(inputElement));
         }
         return false;

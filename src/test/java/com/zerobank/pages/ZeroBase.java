@@ -111,7 +111,10 @@ public abstract class ZeroBase {
             emptyField=element;
         }
         wait.until(ExpectedConditions.presenceOfElementLocated(By.name(element)));
-        driver.findElement(By.name(element)).sendKeys(data);
+        if(!driver.findElement(By.name(element)).getAttribute("value").equals(""));
+            driver.findElement(By.name(element)).clear();
+        driver.findElement(By.name(element)).sendKeys("value",data);
+
     }
 
 }
