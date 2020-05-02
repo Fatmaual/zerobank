@@ -54,9 +54,4 @@ public class PB_StepDefinitions {
         Assert.assertTrue(payBills.isEntryCorrect("date"));
     }
 
-
-
-
-
-
 }
