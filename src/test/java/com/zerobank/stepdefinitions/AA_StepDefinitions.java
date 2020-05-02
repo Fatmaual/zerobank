@@ -36,7 +36,11 @@ public class AA_StepDefinitions {
     @Then("^results table should only show transactions dates between \"(.*)\" to \"(.*)\"$")
     public void results_table_should_only_show_transactions_dates_between_to(String from, String to) {
          Assert.assertTrue(accountActivity.isItInTheRange(from,to,accountActivity.getDates()));
+    }
 
+    @Then("the results	should be sorted by	most recent	date")
+    public void the_results_should_be_sorted_by_most_recent_date() {
+        Assert.assertTrue(accountActivity.isItSortedRecentToOld(accountActivity.getDates()));
     }
 
 

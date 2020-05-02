@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class AccountActivity extends ZeroBase {
@@ -50,15 +51,17 @@ public class AccountActivity extends ZeroBase {
      *          List<String> dates has data: {"2012-09-06","2012-09-05","2012-09-01"}
      */
     public boolean isItInTheRange(String from,String to,List<String> dates){
+        LocalDate fromDate=LocalDate.parse(from);
+        LocalDate toDate=LocalDate.parse(to);
         for (String date: dates) {
-            String[] splitedDate=date.split("-");
-            String[] splitedFrom=from.split("-");
-            String[] splitedTo=to.split("-");
-            for(int i=0;i<3;i++){
-
-                if(Integer.parseInt(splitedDate[i])<Integer.parseInt(splitedFrom[i] )|| Integer.parseInt(splitedDate[i])>Integer.parseInt(splitedTo[i])){
-                    return false;
-                }
+            LocalDate scrappedDate=LocalDate.parse(date);
+            if(!(fromDate.isBefore(scrappedDate)||fromDate.isEqual(scrappedDate))){
+                System.out.println(fromDate+" is not before or equal "+scrappedDate);
+                return false;
+            }
+            else if(!(toDate.isAfter(scrappedDate)||toDate.isEqual(scrappedDate))){
+                System.out.println(fromDate+" is not before or equal "+scrappedDate);
+                return false;
             }
 
         }
@@ -67,11 +70,30 @@ public class AccountActivity extends ZeroBase {
 
     /**
      * Get all dates as String from filtered transaction table
-     * @return
+     * @return Listed transaction dates as List<String>
      */
     public List<String> getDates(){
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("filtered_transactions_for_account"))));
         return BrowserUtils.getTextFromWebElements(driver.findElements(By.xpath("//div[@id=\"filtered_transactions_for_account\"]//tr//td[1]")));
+    }
+
+    /**
+     * This method help you to check whether they are sorted or not
+     *
+     * @param dates List<String> dates has data: {"2012-09-06","2012-09-05","2012-09-01"}
+     * @return true if it is ordered as most recet date to old date exp: {"2012-09-06","2012-09-05","2012-09-01"}
+     *         false if it is not ordered as the most recet date to old date exp: {"2012-09-01","2012-09-05","2012-09-09"}
+     */
+    public boolean isItSortedRecentToOld(List<String> dates){
+        LocalDate tmpDate=LocalDate.parse(dates.get(0));
+        for (int i=0;i<dates.size();i++) {
+            LocalDate scrappedDate=LocalDate.parse(dates.get(i));
+            if(!(tmpDate.isEqual(scrappedDate)||tmpDate.isAfter(scrappedDate))){
+                return false;
+            }
+            tmpDate=scrappedDate;
+        }
+        return true;
     }
 
 }
