@@ -5,11 +5,11 @@ import com.zerobank.utilities.BrowserUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class PayBills extends ZeroBase {
 
-    private boolean isInputFieldEmpty;
-    private String emptyField;
+
 
     /**
      * This method returns empty field name
@@ -40,7 +40,16 @@ public class PayBills extends ZeroBase {
      *                    Purchase for Purchase Foreign Currency module
      */
     public void completeProcess(String processName){
-        driver.findElement(By.cssSelector("input[value='"+processName+"']")).click();
+        By element;
+        if(processName.equalsIgnoreCase("Pay")||processName.equalsIgnoreCase("Add")||processName.equalsIgnoreCase("Purchase")){
+            element=By.cssSelector("input[value='"+processName+"']");
+
+        }else{
+            element=By.xpath("//button[text()='"+processName+"']");
+        }
+        wait.until(ExpectedConditions.presenceOfElementLocated(element));
+        driver.findElement(element).click();
+
         BrowserUtils.waitForPageToLoad(10);
     }
 

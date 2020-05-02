@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,6 +15,9 @@ import java.util.List;
 public abstract class ZeroBase {
     protected WebDriver driver = Driver.getDriver();
     protected WebDriverWait wait = new WebDriverWait(driver, 25);
+
+    protected boolean isInputFieldEmpty;
+    protected String emptyField;
 
 
     public ZeroBase(){
@@ -94,6 +98,20 @@ public abstract class ZeroBase {
     public  boolean isInputFieldContainsSpecialChar(WebElement element){
         String data=element.getAttribute("value");
         return !data.equals("")&& data!=null && data.matches(".*[^a-zA-Z0-9 ].*");
+    }
+
+    /**
+     * This method for data entry
+     * @param data input data
+     * @param element web element name
+     */
+    public void enterDataTo(String data, String element){
+        if(data.equals("")){
+            isInputFieldEmpty=true;
+            emptyField=element;
+        }
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.name(element)));
+        driver.findElement(By.name(element)).sendKeys(data);
     }
 
 }

@@ -2,6 +2,7 @@ package com.zerobank.stepdefinitions;
 
 import com.zerobank.pages.modules.AccountActivity;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 import java.util.List;
@@ -12,20 +13,31 @@ public class AA_StepDefinitions {
 
     @Then("user should navigate to {string} sub-page")
     public void user_should_navigate_to_sub_page(String string) {
-        System.out.println("Navigate to "+string);
         accountActivity.navigateToSubPage(string);
     }
 
     @Then("user should verify that account option is {string}")
     public void user_should_verify_that_account_option_is(String string) {
-        System.out.println("Verify default account is "+string);
         Assert.assertEquals(string,accountActivity.getSelectedOption());
     }
 
     @Then("user should verify that account options:")
     public void user_should_verify_that_account_options(List<String> dataTable) {
-        System.out.println("Verify account types: "+dataTable);
         Assert.assertTrue(accountActivity.isContainsOptions(dataTable));
     }
+
+
+    @When("^the user enters date range from \"(.*)\" to \"(.*)\"$")
+    public void the_user_enters_date_range_from_to(String from, String to) {
+        accountActivity.enterDataTo(from,"fromDate");
+        accountActivity.enterDataTo(to,"toDate");
+    }
+
+    @Then("results table should only show transactions dates between “{int}-{int}-{int}” to “{int}-{int}-{int}”")
+    public void results_table_should_only_show_transactions_dates_between_to(Integer int1, Integer int2, Integer int3, Integer int4, Integer int5, Integer int6) {
+         Assert.assertTrue(accountActivity.isItInTheRange(int1,int2,int3,int4,int5,int6,accountActivity.getDates()));
+
+    }
+
 
 }

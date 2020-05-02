@@ -3,7 +3,7 @@ Feature: Login
   As user, I want to be able to login with username and password
 
   Background: open login page
-    Given user in on the login page
+    Given user in the login page
 
     @valid_user
     Scenario: Login with valid credentials and verify that title is Zero - Account Summary
