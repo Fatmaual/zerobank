@@ -19,18 +19,6 @@ public class PayBills extends ZeroBase {
         return emptyField;
     }
 
-    /**
-     * This method for data entry
-     * @param data input data
-     * @param element web element name
-     */
-    public void enterDataTo(String data, String element){
-        if(data.equals("")){
-            isInputFieldEmpty=true;
-            emptyField=element;
-        }
-        driver.findElement(By.name(element.toLowerCase())).sendKeys(data);
-    }
 
     /**
      * This method helps you to click process for sub-module's complete button
@@ -49,7 +37,7 @@ public class PayBills extends ZeroBase {
         }
         wait.until(ExpectedConditions.presenceOfElementLocated(element));
         driver.findElement(element).click();
-        BrowserUtils.waitForPageToLoad(10);
+        BrowserUtils.wait(2);
     }
 
     /**

@@ -72,9 +72,9 @@ public class AccountActivity extends ZeroBase {
      * Get all dates as String from filtered transaction table
      * @return Listed transaction dates as List<String>
      */
-    public List<String> getDates(){
+    public List<String> getDataFromTable(String columnNumber){
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("filtered_transactions_for_account"))));
-        return BrowserUtils.getTextFromWebElements(driver.findElements(By.xpath("//div[@id=\"filtered_transactions_for_account\"]//td[1]")));
+        return BrowserUtils.getTextFromWebElements(driver.findElements(By.xpath("//div[@id=\"filtered_transactions_for_account\"]//td["+columnNumber+"]")));
     }
 
     /**
@@ -100,15 +100,36 @@ public class AccountActivity extends ZeroBase {
     /**
      * This method check that is data inclued in the list or not.
      * @param data searched data
-     * @param dates listed/stored data
+     * @param column listed/stored data
      * @return true if data in the list
      *         false if data not in the list
+     * NOT: this method check wheter a single data appear one time in the list
      */
-    public boolean isDataListed(String data, List<String> dates){
-        if(dates.contains(data)){
+    public boolean isDateListed(String data, List<String> column){
+        if(column.contains(data)){
             return true;
         }
      return false;
     }
+
+    /**
+     * This method check that is data inclued in the list or not.
+     * @param value searched value
+     * @param column listed/stored data
+     * @return true if data in the list
+     *          false if data not in the list
+     * NOT: This method searches a value in every String, if the value doesn't exist in a String, returns false
+     * This is for checking Description column
+     */
+    public boolean isDataListed(String value, List<String> column){
+        //System.out.println(column.toString());
+        for (String data:column) {
+            if(!data.contains(value)){
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 }

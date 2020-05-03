@@ -35,18 +35,29 @@ public class AA_StepDefinitions {
 
     @Then("^results table should only show transactions dates between \"(.*)\" to \"(.*)\"$")
     public void results_table_should_only_show_transactions_dates_between_to(String from, String to) {
-         Assert.assertTrue(accountActivity.isItInTheRange(from,to,new AccountActivity().getDates()));
+         Assert.assertTrue(accountActivity.isItInTheRange(from,to,new AccountActivity().getDataFromTable("1")));
     }
 
     @Then("the results	should be sorted by	most recent	date")
     public void the_results_should_be_sorted_by_most_recent_date() {
-        Assert.assertTrue(accountActivity.isItSortedRecentToOld(new AccountActivity().getDates()));
+        Assert.assertTrue(accountActivity.isItSortedRecentToOld(new AccountActivity().getDataFromTable("1")));
     }
 
     @Then("the results table should only not contain transactions dated {string}")
     public void the_results_table_should_only_not_contain_transactions_dated(String string) {
-        Assert.assertFalse(accountActivity.isDataListed(string,new AccountActivity().getDates()));
+        Assert.assertFalse(accountActivity.isDateListed(string,new AccountActivity().getDataFromTable("1")));
     }
+
+    @Then("results table should only show descriptions containing {string}")
+    public void results_table_should_only_show_descriptions_containing(String string) {
+        Assert.assertTrue(accountActivity.isDataListed(string,new AccountActivity().getDataFromTable("2")));
+    }
+
+    @Then("the results table should not show description containing {string}")
+    public void the_results_table_should_not_show_description_containing(String string) {
+        Assert.assertFalse(accountActivity.isDataListed(string,new AccountActivity().getDataFromTable("2")));
+    }
+
 
 
 
