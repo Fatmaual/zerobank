@@ -1,9 +1,10 @@
 package com.zerobank.stepdefinitions;
 
 import com.zerobank.pages.modules.PayBills;
-import com.zerobank.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+
+import java.util.Map;
 
 public class PB_StepDefinitions {
     PayBills payBills=new PayBills();
@@ -33,7 +34,6 @@ public class PB_StepDefinitions {
     @Then("user should complete process with {string} button")
     public void user_should_complete_process_with_button(String string) {
         payBills.completeProcess(string);
-        BrowserUtils.wait(3);
     }
 
     @Then("user should verify that success message {string}")
@@ -55,5 +55,17 @@ public class PB_StepDefinitions {
     public void user_should_verify_that_date_field_doesn_t_accept_alphabetic_character() {
         Assert.assertTrue(payBills.isEntryCorrect("date"));
     }
+
+    @Then("creates new payee using following information:")
+    public void creates_new_payee_using_following_information(Map<String,String> dataTable) {
+
+
+
+        payBills.enterDataTo(dataTable.get("Payee Name"),"name");
+        payBills.enterDataTo(dataTable.get("Payee Address"),"address");
+        payBills.enterDataTo(dataTable.get("Account"),"account");
+        payBills.enterDataTo(dataTable.get("Payee Details"),"details");
+    }
+
 
 }

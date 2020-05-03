@@ -35,13 +35,7 @@ public abstract class ZeroBase {
      *               Online Statements
      */
     public void navigateTo(String module){
-        List<WebElement> tabs=driver.findElements(By.xpath("//ul[@class=\"nav nav-tabs\"]//a"));
-        for (WebElement tab:tabs) {
-            if(tab.getText().equalsIgnoreCase(module)){
-                tab.click();
-                break;
-            }
-        }
+        driver.findElement(By.xpath("//ul[@class=\"nav nav-tabs\"]//a[text()='"+module+"']")).click();
         BrowserUtils.waitForPageToLoad(10);
     }
 
@@ -111,9 +105,13 @@ public abstract class ZeroBase {
             emptyField=element;
         }
         wait.until(ExpectedConditions.presenceOfElementLocated(By.name(element)));
-        if(!driver.findElement(By.name(element)).getAttribute("value").equals(""));
+        if(element.equals("account")){
+            driver.findElement(By.xpath("//input[@name='account']")).sendKeys(data);
+        }else{
             driver.findElement(By.name(element)).clear();
-        driver.findElement(By.name(element)).sendKeys(data);
+            driver.findElement(By.name(element)).sendKeys(data);
+        }
+
     }
 
 }
