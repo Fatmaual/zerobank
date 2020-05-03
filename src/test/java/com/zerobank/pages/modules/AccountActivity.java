@@ -96,4 +96,19 @@ public class AccountActivity extends ZeroBase {
         return true;
     }
 
+
+    /**
+     * This method check that is data inclued in the list or not.
+     * @param data searched data
+     * @param dates listed/stored data
+     * @return true if data in the list
+     *         false if data not in the list
+     */
+    public boolean isDataListed(String data, List<String> dates){
+        if(dates.contains(data)){
+            return true;
+        }
+     return false;
+    }
+
 }

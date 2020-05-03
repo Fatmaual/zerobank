@@ -43,10 +43,12 @@ public class AA_StepDefinitions {
         Assert.assertTrue(accountActivity.isItSortedRecentToOld(new AccountActivity().getDates()));
     }
 
-    @Then("the	results	table should only not contain transactions dated {string}")
+    @Then("the results table should only not contain transactions dated {string}")
     public void the_results_table_should_only_not_contain_transactions_dated(String string) {
-        System.out.println(string);
+        Assert.assertFalse(accountActivity.isDataListed(string,new AccountActivity().getDates()));
     }
+
+
 
 
 

@@ -33,6 +33,7 @@ public class PB_StepDefinitions {
     public void user_should_complete_process_with_button(String string) {
         payBills.completeProcess(string);
     }
+
     @Then("user should verify that success message {string}")
     public void user_should_verify_that_success_message(String string) {
         Assert.assertEquals(string,payBills.getAlert());
@@ -41,7 +42,6 @@ public class PB_StepDefinitions {
     @Then("user should verify that required field message {string}")
     public void user_should_verify_that_required_field_message(String string) {
         Assert.assertEquals(string,payBills.getRequiredFieldAlert());
-
     }
 
     @Then("user should verify that amount field doesn't accept alphabetic or special character")
