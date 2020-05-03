@@ -1,6 +1,7 @@
 package com.zerobank.stepdefinitions;
 
 import com.zerobank.pages.modules.PayBills;
+import com.zerobank.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
@@ -32,6 +33,7 @@ public class PB_StepDefinitions {
     @Then("user should complete process with {string} button")
     public void user_should_complete_process_with_button(String string) {
         payBills.completeProcess(string);
+        BrowserUtils.wait(3);
     }
 
     @Then("user should verify that success message {string}")
