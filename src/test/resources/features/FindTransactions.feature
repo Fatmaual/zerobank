@@ -16,7 +16,7 @@ Feature: Find Transactions in Account Activity
     And the results table should only not contain transactions dated "2012-09-01"
 
   @account_activity_search_description
-  Scenario:	Search	description
+  Scenario:	Search description
     Given user in the login page
     When users logs in with valid credentials
     Then user should navigate to "Account Activity" page
@@ -28,3 +28,16 @@ Feature: Find Transactions in Account Activity
     And user should complete process with "Find" button
     Then results table should only show descriptions containing "OFFICE"
     But the results table should not show description containing "ONLINE"
+
+  @account_activity_search_description_case_sensitive
+  Scenario:	Search	description	case insensitive
+    Given user in the login page
+    When users logs in with valid credentials
+    Then user should navigate to "Account Activity" page
+    Then user should navigate to "Find Transactions" sub-page
+    When user should enter a Description "ONLINE"
+    And user should complete process with "Find" button
+    Then results table should only show descriptions containing "ONLINE"
+    When user should enter a Description "online"
+    And user should complete process with "Find" button
+    Then results table should only show descriptions containing "ONLINE"

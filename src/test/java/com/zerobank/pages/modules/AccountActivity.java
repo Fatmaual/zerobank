@@ -122,11 +122,14 @@ public class AccountActivity extends ZeroBase {
      * This is for checking Description column
      */
     public boolean isDataListed(String value, List<String> column){
-        //System.out.println(column.toString());
+        if(column.size()==0){
+            return false; // if table doesn't return anything with correct data, return false
+        }
         for (String data:column) {
             if(!data.contains(value)){
                 return false;
             }
+
         }
         return true;
     }

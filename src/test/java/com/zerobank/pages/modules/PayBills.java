@@ -37,7 +37,7 @@ public class PayBills extends ZeroBase {
         }
         wait.until(ExpectedConditions.presenceOfElementLocated(element));
         driver.findElement(element).click();
-        BrowserUtils.wait(2);
+        BrowserUtils.wait(3);
     }
 
     /**
