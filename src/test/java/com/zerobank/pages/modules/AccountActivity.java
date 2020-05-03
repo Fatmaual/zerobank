@@ -5,16 +5,12 @@ import com.zerobank.utilities.BrowserUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
 public class AccountActivity extends ZeroBase {
-
-
-
 
 
 

@@ -121,21 +121,14 @@ public abstract class ZeroBase {
      * @return false if the options doesn't exist. Returns true else.
      */
     public boolean isContainsOptions(List<String> data, String id) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
+        List<String> options=BrowserUtils.getTextFromWebElements(new Select(driver.findElement(By.id(id))).getOptions());
         for (String e : data) {
-            if (!getOptions(id).contains(e)) {
+            if (!options.contains(e)) {
                 return false;
             }
         }
         return true;
-    }
-
-    /**
-     * This method returns available options in a drop-down menu
-     * @param id drop-down element ID
-     * @return Text of options
-     */
-    public List<String> getOptions(String id) {
-        return BrowserUtils.getTextFromWebElements(new Select(driver.findElement(By.id(id))).getOptions());
     }
 
     /**

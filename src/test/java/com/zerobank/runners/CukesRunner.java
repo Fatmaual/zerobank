@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         dryRun = false,
         strict = false,
-        tags= "@account_activity_navigation",
+        tags= "@pay_bills_foreign_currency",
         plugin={"pretty",
                 "html:target/default-report",
                 "json:target/zerobank_cucumber.json"
