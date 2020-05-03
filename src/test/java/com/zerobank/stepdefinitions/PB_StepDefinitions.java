@@ -58,9 +58,6 @@ public class PB_StepDefinitions {
 
     @Then("creates new payee using following information:")
     public void creates_new_payee_using_following_information(Map<String,String> dataTable) {
-
-
-
         payBills.enterDataTo(dataTable.get("Payee Name"),"name");
         payBills.enterDataTo(dataTable.get("Payee Address"),"address");
         payBills.enterDataTo(dataTable.get("Account"),"account");
