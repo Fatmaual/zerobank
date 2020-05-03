@@ -18,12 +18,12 @@ public class AA_StepDefinitions {
 
     @Then("user should verify that account option is {string}")
     public void user_should_verify_that_account_option_is(String string) {
-        Assert.assertEquals(string,accountActivity.getSelectedOption());
+        Assert.assertEquals(string,accountActivity.getSelectedOption("aa_accountId"));
     }
 
     @Then("user should verify that account options:")
     public void user_should_verify_that_account_options(List<String> dataTable) {
-        Assert.assertTrue(accountActivity.isContainsOptions(dataTable));
+        Assert.assertTrue(accountActivity.isContainsOptions(dataTable,"aa_accountId"));
     }
 
 

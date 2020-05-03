@@ -4,6 +4,7 @@ import com.zerobank.pages.modules.PayBills;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
+import java.util.List;
 import java.util.Map;
 
 public class PB_StepDefinitions {
@@ -62,6 +63,11 @@ public class PB_StepDefinitions {
         payBills.enterDataTo(dataTable.get("Payee Address"),"address");
         payBills.enterDataTo(dataTable.get("Account"),"account");
         payBills.enterDataTo(dataTable.get("Payee Details"),"details");
+    }
+
+    @Then("following currencies should be available")
+    public void following_currencies_should_be_available(List<String> dataTable) {
+        payBills.isContainsOptions(dataTable,"pc_currency");
     }
 
 

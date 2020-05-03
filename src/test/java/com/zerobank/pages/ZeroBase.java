@@ -114,4 +114,39 @@ public abstract class ZeroBase {
 
     }
 
+    /**
+     * This method used to determine provided options are available in a drop down
+     *
+     * @param data provided List of data
+     * @return false if the options doesn't exist. Returns true else.
+     */
+    public boolean isContainsOptions(List<String> data, String id) {
+        for (String e : data) {
+            if (!getOptions(id).contains(e)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * This method returns available options in a drop-down menu
+     * @param id drop-down element ID
+     * @return Text of options
+     */
+    public List<String> getOptions(String id) {
+        return BrowserUtils.getTextFromWebElements(new Select(driver.findElement(By.id(id))).getOptions());
+    }
+
+    /**
+     * This method returns selected account type
+     *
+     * @return string data
+     */
+    public String getSelectedOption(String id) {
+        return new Select(driver.findElement(By.id(id))).getFirstSelectedOption().getText();
+    }
+
+
+
 }
