@@ -2,6 +2,7 @@ package com.zerobank.stepdefinitions;
 
 import com.zerobank.pages.modules.PayBills;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 import java.util.List;
@@ -69,6 +70,24 @@ public class PB_StepDefinitions {
     public void following_currencies_should_be_available(List<String> dataTable) {
         payBills.isContainsOptions(dataTable,"pc_currency");
     }
+
+    @When("user tries to calculate cost without selecting a currency")
+    public void user_tries_to_calculate_cost_withought_selecting_a_currency() {
+        payBills.enterAmount("1000");
+        payBills.completeProcess("Calculate Costs");
+    }
+
+    @Then("error message should be displayed")
+    public void error_message_should_be_displayed() {
+        Assert.assertTrue(payBills.isWarningMessageDisplayed());
+    }
+
+    @When("user tries to calculate cost without entering a value")
+    public void user_tries_to_calculate_cost_without_entering_a_value() {
+        payBills.completeProcess("Calculate Costs");
+    }
+
+
 
 
 }

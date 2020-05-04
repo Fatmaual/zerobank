@@ -1,7 +1,6 @@
 package com.zerobank.pages.modules;
 
 import com.zerobank.pages.ZeroBase;
-import com.zerobank.utilities.BrowserUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -20,25 +19,7 @@ public class PayBills extends ZeroBase {
     }
 
 
-    /**
-     * This method helps you to click process for sub-module's complete button
-     * @param processName should get:
-     *                    Pay for Pay Saved Payee module
-     *                    Add for Add New Payee module
-     *                    Purchase for Purchase Foreign Currency module
-     */
-    public void completeProcess(String processName){
-        By element;
-        if(processName.equalsIgnoreCase("Pay")||processName.equalsIgnoreCase("Add")||processName.equalsIgnoreCase("Purchase")){
-            element=By.cssSelector("input[value='"+processName+"']");
 
-        }else{
-            element=By.xpath("//button[text()='"+processName+"']");
-        }
-        wait.until(ExpectedConditions.presenceOfElementLocated(element));
-        driver.findElement(element).click();
-        BrowserUtils.wait(3);
-    }
 
     /**
      * This method returns process result message
@@ -73,6 +54,24 @@ public class PayBills extends ZeroBase {
             return !(isInputFieldContainsAlphabeticChar(inputElement));
         }
         return false;
+    }
+
+    /**
+     * This method verifies is alert displayed or not
+     * @return true if alert displayed
+     */
+    public boolean isWarningMessageDisplayed(){
+        return driver.switchTo().alert().getText().equals("Please, ensure that you have filled all the required fields with valid values.");
+    }
+
+    /**
+     * Enter amount for foreign currency purchase
+     * @param amount
+     */
+    public void enterAmount(String amount){
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='pc_amount']")));
+        driver.findElement(By.xpath("//input[@id='pc_amount']")).click();
+        driver.findElement(By.xpath("//input[@id='pc_amount']")).sendKeys(amount);
     }
 
 

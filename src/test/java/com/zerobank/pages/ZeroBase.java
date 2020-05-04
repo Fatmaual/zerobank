@@ -140,6 +140,24 @@ public abstract class ZeroBase {
         return new Select(driver.findElement(By.id(id))).getFirstSelectedOption().getText();
     }
 
+    /**
+     * This method helps you to click process for sub-module's complete button
+     * @param processName should get:
+     *                    Pay for Pay Saved Payee module
+     *                    Add for Add New Payee module
+     *                    Purchase for Purchase Foreign Currency module
+     */
+    public void completeProcess(String processName) {
+        By element;
+        if (processName.equalsIgnoreCase("Find")) {
+            element = By.xpath("//button[text()='" + processName + "']");
+        }else{
+            element = By.cssSelector("input[value='" + processName + "']");
+        }
+        wait.until(ExpectedConditions.presenceOfElementLocated(element));
+        driver.findElement(element).click();
+        BrowserUtils.wait(3);
+    }
 
 
 }

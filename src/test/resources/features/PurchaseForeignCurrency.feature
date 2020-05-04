@@ -21,3 +21,13 @@ Feature: Purchase Foreign Currency
       | Norway (krone)        |
       | New	Zealand (dollar)  |
       | Singapore (dollar)    |
+
+  @foreign_currency_alert_1
+  Scenario:	Error	message for	not	selecting	currency
+    When user tries to calculate cost without selecting a currency
+    Then error message should be displayed
+
+  @foreign_currency_alert_2
+  Scenario:	Error message for not entering value
+    When user tries to calculate cost without entering a value
+    Then error message should be displayed
