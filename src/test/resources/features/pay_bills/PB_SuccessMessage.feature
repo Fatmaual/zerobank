@@ -12,7 +12,7 @@ Feature: Pay Bills
     Then user should choose an Account type "<Account>"
     Then user should enter an Amount "<Amount>"
     Then user should enter a Date "<Date>"
-    And user should enter a Description "<Description>"
+    Then user should enter a Description "<Description>"
     Then user should complete process with "Pay" button
     And user should verify that success message "The payment was successfully submitted."
 

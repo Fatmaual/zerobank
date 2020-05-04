@@ -12,8 +12,8 @@ Feature: Pay Bills
     Then user should choose an Account type "<Account>"
     Then user should enter an Amount "<Amount>"
     Then user should enter a Date "<Date>"
-    And user should enter a Description "<Description>"
-    Then user should verify that amount field doesn't accept alphabetic or special character
+    Then user should enter a Description "<Description>"
+    And user should verify that amount field doesn't accept alphabetic or special character
 
     Examples:
       | Payee             | Account     | Amount  | Date      | Description  |
