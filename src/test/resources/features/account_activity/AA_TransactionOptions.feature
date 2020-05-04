@@ -7,10 +7,10 @@ Feature: Account Activity
     Given user in the login page
     When users logs in with valid credentials
     Then user should navigate to "Account Activity" page
-    Then user should navigate to "Show Transactions" sub-page
-    And user should verify that account options:
-    |Savings|
-    |Checking|
-    |Loan    |
-    |Credit Card|
-    |Brokerage  |
+    And user should navigate to "Show Transactions" sub-page
+    Then user should verify that account options:
+      | Savings     |
+      | Checking    |
+      | Loan        |
+      | Credit Card |
+      | Brokerage   |

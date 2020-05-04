@@ -38,7 +38,7 @@ public class AA_StepDefinitions {
          Assert.assertTrue(accountActivity.isItInTheRange(from,to,new AccountActivity().getDataFromTable("Date")));
     }
 
-    @Then("the results	should be sorted by	most recent	date")
+    @Then("the results should be sorted by most recent date")
     public void the_results_should_be_sorted_by_most_recent_date() {
         Assert.assertTrue(accountActivity.isItSortedRecentToOld(new AccountActivity().getDataFromTable("Date")));
     }

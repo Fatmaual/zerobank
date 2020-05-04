@@ -7,5 +7,5 @@ Feature: Account Activity
     Given user in the login page
     When users logs in with valid credentials
     Then user should navigate to "Account Activity" page
-    Then user should navigate to "Show Transactions" sub-page
-    And user should verify that account option is "Savings"
+    And user should navigate to "Show Transactions" sub-page
+    Then user should verify that account option is "Savings"
