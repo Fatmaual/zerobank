@@ -33,7 +33,9 @@
                 <configuration>
                     <!-- for parallel running Cucumber-->
                     <parallel>methods</parallel>
-                    <useUnlimitedThreads>true</useUnlimitedThreads>
+                    <threadCount>2</threadCount>
+                    <perCoreThreadCount>false</perCoreThreadCount>
+              <!--      <useUnlimitedThreads>true</useUnlimitedThreads>  THIS IS FOR UNLIMITED THREAD -->
                     <includes>
                         <!-- for  run class or classes-->
                         <include>**/*CukesRunner.java</include>
