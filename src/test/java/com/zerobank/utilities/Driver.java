@@ -9,46 +9,48 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 public class Driver {
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> driverPool=new ThreadLocal<>();
 
     private Driver(){
 
     }
 
-    public static WebDriver getDriver(){
-        if(driver==null){
+    public synchronized static WebDriver getDriver(){
+        if(driverPool.get()==null){
             String browser=ConfigurationReader.getProperty("browser").toLowerCase();
             String os = System.getProperty("os.name").toLowerCase();
 
             if(os.contains("windows")&&browser.equalsIgnoreCase("safari")  ||  os.contains("mac")&&browser.equalsIgnoreCase("edg")){
-                driver= null;
+                driverPool= null;
                 throw  new RuntimeException("==> Incompatible browser choosen for "+os.toUpperCase()+"!! <==");
             }
             switch (browser){
                 case "chrome":{
                     WebDriverManager.chromedriver().setup();
-                    driver= new ChromeDriver();
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.addArguments("--start-maximized");
+                    driverPool.set(new ChromeDriver(chromeOptions));
                     break;
                 }
                 case "firefox":{
                     WebDriverManager.firefoxdriver().setup();
-                    driver= new FirefoxDriver();
+                    driverPool.set(new FirefoxDriver());
                     break;
                 }
                 case "edge":{
                     WebDriverManager.edgedriver().setup();
-                    driver= new EdgeDriver();
+                    driverPool.set(new EdgeDriver());
                     break;
                 }
                 case "safari":{
-                    driver= new SafariDriver();
+                    driverPool.set(new SafariDriver());
                     break;
                 }
                 case "chromeheadless":{
                     WebDriverManager.chromedriver().setup();
-                    ChromeOptions options=new ChromeOptions();
+                    ChromeOptions options = new ChromeOptions();
                     options.setHeadless(true);
-                    driver=new ChromeDriver(options);
+                    driverPool.set(new ChromeDriver(options));
                     break;
 
                 }
@@ -58,13 +60,15 @@ public class Driver {
             }
 
         }
-        return driver;
+        return driverPool.get();
     }
 
     public static void closeDriver(){
-        if(driver!=null){
-            driver.quit();
-            driver=null;
+        if(driverPool!=null){
+            driverPool.get().quit();
+            driverPool.remove();
         }
     }
 }
+
+

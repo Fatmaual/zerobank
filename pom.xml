@@ -36,7 +36,7 @@
                     <useUnlimitedThreads>true</useUnlimitedThreads>
                     <includes>
                         <!-- for  run class or classes-->
-                        <include>**/CukesRunner*.java</include>
+                        <include>**/*CukesRunner.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
